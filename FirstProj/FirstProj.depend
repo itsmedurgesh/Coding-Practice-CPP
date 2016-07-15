@@ -1,0 +1,50 @@
+# depslib dependency file v1.0
+1442948056 source:/home/dc/c++/FirstProj/main.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<ctime>
+	"NewTestClass.h"
+	"ConstFuncExmple.h"
+	"Sally.h"
+	"Enemy.h"
+	"FunctionTemplate.h"
+	"TemplateClass.h"
+
+1442856026 /home/dc/c++/FirstProj/include/NewTestClass.h
+
+1442857557 source:/home/dc/c++/FirstProj/src/NewTestClass.cpp
+	"NewTestClass.h"
+	<iostream>
+
+1442865068 source:/home/dc/c++/FirstProj/src/ConstFuncExmple.cpp
+	"ConstFuncExmple.h"
+	<iostream>
+
+1442865154 /home/dc/c++/FirstProj/include/ConstFuncExmple.h
+
+1442940746 /home/dc/c++/FirstProj/include/Sally.h
+	<iostream>
+
+1442938926 source:/home/dc/c++/FirstProj/src/Sally.cpp
+	"Sally.h"
+
+1442942981 source:/home/dc/c++/FirstProj/src/Enemy.cpp
+	"Enemy.h"
+	<iostream>
+
+1442943974 /home/dc/c++/FirstProj/include/Enemy.h
+
+1442945207 /home/dc/c++/FirstProj/include/FunctionTemplate.h
+
+1442944360 source:/home/dc/c++/FirstProj/src/FunctionTemplate.cpp
+	"FunctionTemplate.h"
+
+1442946772 source:/home/dc/c++/FirstProj/src/TemplateClass.cpp
+	"TemplateClass.h"
+
+1442946922 /home/dc/c++/FirstProj/include/TemplateClass.h
+
+1442948014 source:/home/dc/c++/FirstProj/src/TemplateSpecialization.cpp
+	<iostream>
+

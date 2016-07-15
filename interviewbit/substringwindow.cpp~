@@ -1,0 +1,49 @@
+#include <iostream>
+#include <unordered_map>
+
+using namespace std;
+
+string minWindow(string S, string T) {
+    // Do not write main() function.
+    // Do not read input, instead use the arguments to the function.
+    // Do not print the output, instead return values as specified
+    // Still have a doubt. Checkout www.interviewbit.com/pages/sample_codes/ for more details
+    
+    if(S.length() < T.length()) return "";
+    
+    unordered_map<char, int> hash;
+    for(int i = 0; i<T.size(); ++i){
+        if(hash.find(T[i]) != hash.end()) ++hash[T[i]];
+        else hash[T[i]] = 1;
+    }   
+    
+    int total;
+    int start = 0, length = 0;
+    
+    for(int head = 0, tail = 0; tail < S.length(); ++tail){
+        if(hash.find(S[tail]) == hash.end()) continue;
+        
+        --hash[S[tail]];
+        
+        if(hash[S[tail]] >= 0) ++total;
+        if(total == T.size()){
+            while(hash.find(S[head]) == hash.end() || hash[S[head]] < 0 ){
+                if(hash.find(S[head]) != hash.end()) ++hash[S[head]];
+                ++head;
+            }
+            
+            if(length == 0 || length > tail - head +1){
+                length = tail - head + 1;
+                start = head;
+            }
+        }
+    }
+    
+    return  S.substr(start, length);
+}
+
+int main(){
+	cout<<minWindow("ADOBECODEBANC", "ABC");
+}
+
+

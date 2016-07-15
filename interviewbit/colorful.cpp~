@@ -1,0 +1,25 @@
+#include <iostream>
+#include <map>
+#include <cstring>
+using namespace std;
+
+int main(){
+    
+    int A = 123;
+    char s[20];
+    sprintf(s, "%d", A);
+    int len = strlen(s);
+    map<long int, bool> hash;
+    for(int i = 0; i < len; ++i){
+        long int product = 1;
+        for(int j = 1; j < len; ++j ){
+        	
+            product *= (long int)(s[j] - '0');
+            if(hash.find(product) != hash.end()){ cout<< "false"; return 0;}
+            else hash[product] = true;
+        }
+    }
+    
+   
+    cout<< "true";
+}
