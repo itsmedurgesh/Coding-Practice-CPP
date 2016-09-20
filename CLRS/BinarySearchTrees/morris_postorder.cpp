@@ -1,3 +1,5 @@
+//TODO: think of non recursive algorithm, may be based on morris
+//current implementation is WRONG
 #include <iostream>
 
 using namespace std;
@@ -10,7 +12,7 @@ class node{
     node(int d): data(d), left(NULL), right(NULL) {}
 };
 
-void inorder(node *root){
+void postorder(node *root){
     node *cur, *pre;
     if(!root) return;
 
@@ -42,5 +44,5 @@ int main(){
     root->left->left = new node(3);
     root->left->right = new node(10);
     root->right = new node(15);
-    inorder(root);
+    postorder(root);
 }
