@@ -401,10 +401,18 @@ class RBtree{
             auto right = checkTree(node->r, h, bh);
 
             if(std::get<0>(left) == false || std::get<0>(right) == false) return std::make_tuple(false, -1, -1);
+
+            // this condition is important and was missed before
+            // not just min both min and max of left side should be less than node key and both
+            // min and max of right side should be less than node key for the bst property
+            // this was not giving error because I was making tree with right bst property
+            if((node->l != nil && (std::get<1>(left) >= node->key || std::get<2>(left) >= node->key)) ||
+                        (node->r != nil && (std::get<1>(right) <= node->key || std::get<2>(right) <= node->key))) 
+                    return std::make_tuple(false, -1, -1);
+
             int tmin = node->l != nil? std::get<1>(left) : node->key;
             int tmax = node->r != nil? std::get<2>(right) : node->key;
 
-            if(tmin > node->key || tmax < node->key) return std::make_tuple(false, -1, -1);
 
             return std::make_tuple(true, tmin, tmax);
             
@@ -506,7 +514,7 @@ int main(){
     // r.check();
 
 
-    int limit = 10000;
+    int limit = 100;
     std::vector<int> vals(limit);
     for(int i = 0; i < limit; ++i) vals[i] = i;
 
@@ -522,7 +530,7 @@ int main(){
     for (int& x: vals){
         // std::cout<<x<<" ";
         r.insert(x);
-        // r.check();
+        r.check();
     }
     // std::cout<<"\n";
 
@@ -533,7 +541,7 @@ int main(){
         // std::cout<<x<<" ";
         r.remove(r.root, x);
         // r.print();
-        // r.check();
+        r.check();
     }
 
     //    r.print();
